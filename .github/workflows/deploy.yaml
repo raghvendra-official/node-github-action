@@ -23,3 +23,4 @@ jobs:
             cd /your/project/path
             git pull
             docker compose up -d --build
+      
