@@ -3,12 +3,11 @@ name: Deploy NodeJS Application
 on:
   push:
     branches:
-      -main
-
+      - main
 
 jobs:
   deploy:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -17,11 +16,10 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{secrets.SSH_HOST}}
+          host: ${{ secrets.SSH_HOST }}
           username: root
-          key: ${{secrets.SSH_KEY}}
-          script:
-            cd <path>
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /your/project/path
             git pull
             docker compose up -d --build
-      
